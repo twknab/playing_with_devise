@@ -6,9 +6,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to root_url, notice: "Thanks for signing up!"
+      redirect_to dashboard_index, notice: "Thanks for signing up!"
     else
-      render "new"
+      print("HI")
+      render :new
     end
   end
 
