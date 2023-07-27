@@ -8,7 +8,6 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to dashboard_index, notice: "Thanks for signing up!"
     else
-      print("HI")
       render :new
     end
   end
