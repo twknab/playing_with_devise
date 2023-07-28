@@ -1,16 +1,24 @@
-<em>Logged in as <%= current_user.email %></em>
 <%= link_to "Logout", logout_path(current_user.id), method: :delete%>
-<h1>AQI Viewer Dashboard</h1>
-<%# TODO: Conditionally render this if not yet set %>
-<fieldset>
-  <legend>Threshold</legend>
-  <h2><%= @threshold %></h2>
-</fieldset>
-<fieldset>
-  <legend>Current AQI</legend>
-  <h2><%= @aqi %></h2>
-</fieldset>
-<br />
+<h1>AQI Viewer Dashboard 💨</h1>
+<% if @city != nil && @aqi != nil %>
+  <p>Current results for <b><%= @city %></b></p>
+  <hr>
+  <fieldset>
+    <legend>Current AQI</legend>
+    <h2><%= @aqi %></h2>
+  </fieldset>
+  <fieldset>
+    <legend>Threshold</legend>
+    <h2><%= @threshold %></h2>
+  </fieldset>
+  <br />
+  <% if @aqi > @threshold %>
+    <p style="color: red">👎 Warning: AQI is higher than your set threshold</p>
+  <% elsif @aqi < @threshold %>
+    <p style="color: green">👍 All Good: AQI is lower than your set threshold</p>
+  <% end %>
+<% end %>
+<hr>
 <%= form_with url: dashboard_update_path, method: :post do |form| %>
   <div class="field">
     <%= form.label :city %>
@@ -20,5 +28,5 @@
     <%= form.label :aqi_threshold, 'AQI Threshold' %>
     <%= form.number_field :aqi_threshold %>
   </div>
-  <%= form.submit "Update" %>
+  <%= form.submit "Update ✅" %>
 <% end %>

@@ -17,4 +17,7 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, :email, presence: true
   validates_uniqueness_of :email
+
+  validates :aqi_threshold, numericality: { greater_than_or_equal_to: 0 }
+  validates :city, format: { with: /\A.+\z/, message: "City must be a string" }
 end
