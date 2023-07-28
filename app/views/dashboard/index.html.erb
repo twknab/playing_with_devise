@@ -4,11 +4,11 @@
 <%# TODO: Conditionally render this if not yet set %>
 <fieldset>
   <legend>Threshold</legend>
-  <h2><%= current_user.aqi_threshold %></h2>
+  <h2><%= @threshold %></h2>
 </fieldset>
 <fieldset>
   <legend>Current AQI</legend>
-  <%= @aqi %>
+  <h2><%= @aqi %></h2>
 </fieldset>
 <br />
 <%= form_with url: dashboard_update_path, method: :post do |form| %>
@@ -17,7 +17,7 @@
     <%= form.text_field :city %>
   </div>
   <div class="field">
-    <%= form.label :aqi_threshold %>
+    <%= form.label :aqi_threshold, 'AQI Threshold' %>
     <%= form.number_field :aqi_threshold %>
   </div>
   <%= form.submit "Update" %>
