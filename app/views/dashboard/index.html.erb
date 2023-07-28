@@ -1,2 +1,4 @@
-<h1>Dashboard#index</h1>
-<p>Find me in app/views/dashboard/index.html.erb</p>
+<em>Logged in as <%= current_user.email %></em>
+<%= link_to "Logout", logout_path(current_user.id), method: :delete%>
+<h1>AQI Viewer Dashboard</h1>
+//TODO: Add form for processing AQI
