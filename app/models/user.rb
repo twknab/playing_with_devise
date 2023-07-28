@@ -9,6 +9,8 @@
 #  password_digest :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  city            :string
+#  aqi_threshold   :integer
 #
 class User < ApplicationRecord
   has_secure_password
