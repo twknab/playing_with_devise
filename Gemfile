@@ -28,7 +28,10 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 # Dotenv for storing secrets
-gem "dotenv"
+gem "dotenv-rails"
+
+# Add excon
+gem "excon"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"

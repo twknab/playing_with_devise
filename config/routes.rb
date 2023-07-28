@@ -2,14 +2,15 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions
   
-  get 'dashboard', to: 'dashboard#index', as: 'dashboard'
-  get 'home/index'
-
+  # get 'home/index'
+  
   get 'register', to: 'users#new', as: 'register'
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
+  get 'dashboard', to: 'dashboard#index', as: 'dashboard'
+  post 'dashboard/update', to: 'dashboard#update', as: 'dashboard_update'
+  
   # Defines the root path route ("/")
   root "home#index"
 end

@@ -1,4 +1,24 @@
 <em>Logged in as <%= current_user.email %></em>
 <%= link_to "Logout", logout_path(current_user.id), method: :delete%>
 <h1>AQI Viewer Dashboard</h1>
-//TODO: Add form for processing AQI
+<%# TODO: Conditionally render this if not yet set %>
+<fieldset>
+  <legend>Threshold</legend>
+  <h2><%= current_user.aqi_threshold %></h2>
+</fieldset>
+<fieldset>
+  <legend>Current AQI</legend>
+  <%= @aqi %>
+</fieldset>
+<br />
+<%= form_with url: dashboard_update_path, method: :post do |form| %>
+  <div class="field">
+    <%= form.label :city %>
+    <%= form.text_field :city %>
+  </div>
+  <div class="field">
+    <%= form.label :aqi_threshold %>
+    <%= form.number_field :aqi_threshold %>
+  </div>
+  <%= form.submit "Update" %>
+<% end %>
